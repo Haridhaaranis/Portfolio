@@ -1,0 +1,53 @@
+/* ============================================================
+   RESPONSIVE OVERRIDES
+   Mobile nav, hero scaling, and small-screen refinements that
+   don't fit naturally inline in style.css
+   ============================================================ */
+
+@media (max-width: 860px){
+  .nav-toggle{ display:flex; }
+
+  .nav-links{
+    position: fixed;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 20px 24px;
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+  }
+  .nav-links.open{ opacity: 1; transform: translateY(0); visibility: visible; }
+  .nav-links a{ padding: 12px 10px; border-bottom: 1px solid var(--line-soft); border-radius: 0; }
+  .nav-links a:last-child{ border-bottom: none; }
+
+  .nav-cta{ display: none; }
+}
+
+@media (max-width: 640px){
+  .container{ padding: 0 20px; }
+  .hero-actions{ flex-direction: column; align-items: stretch; }
+  .hero-actions .btn{ justify-content: center; }
+  .hero-meta{ gap: 22px; }
+  .stat-grid{ grid-template-columns: 1fr 1fr; gap: 12px; }
+  .filter-bar{ gap: 8px; }
+  #backToTop{ right: 16px; bottom: 16px; width: 42px; height: 42px; }
+}
+
+@media (max-width: 420px){
+  .hero-query{ font-size: 12px; padding: 12px 14px; }
+  .stat-card{ padding: 20px 16px; }
+  .stat-card .num{ font-size: 30px; }
+}
+
+/* Print styles — clean resume-like output if printed */
+@media print{
+  #loader, .navbar, .cursor-dot, .cursor-ring, #backToTop, #hero-canvas, .scroll-indicator{ display: none !important; }
+  body{ background: #fff; color: #000; }
+  section{ padding: 24px 0; }
+}
